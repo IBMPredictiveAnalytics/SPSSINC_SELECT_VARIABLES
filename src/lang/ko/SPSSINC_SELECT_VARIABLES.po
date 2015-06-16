@@ -1,0 +1,74 @@
+#/***********************************************************************
+# * Licensed Materials - Property of IBM 
+# *
+# * IBM SPSS Products: Statistics Common
+# *
+# * (C) Copyright IBM Corp. 1989, 2014
+# *
+# * US Government Users Restricted Rights - Use, duplication or disclosure
+# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# ************************************************************************/
+
+# NLS_ENCODING=UTF-8
+# IBMUPYTH
+
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-12-08 14:55+China Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: SPSSINC_SELECT_VARIABLES.py:186
+msgid "---"
+msgstr ""
+"---"
+
+#: SPSSINC_SELECT_VARIABLES.py:246
+msgid "The attribute name and value pairs on ATTRVALUES do not match"
+msgstr ""
+"ATTRVALUES의 속성 이름 및 값 쌍이 매치하지 않습니다."
+
+#: SPSSINC_SELECT_VARIABLES.py:253
+msgid "Invalid pattern regular expression: %s"
+msgstr ""
+"올바르지 않은 패턴 정규식: %s"
+
+#: SPSSINC_SELECT_VARIABLES.py:302
+msgid "No variables qualify for macro definition %s"
+msgstr ""
+"매크로 정의 %s에 대한 규정된 변수가 없습니다."
+
+#: SPSSINC_SELECT_VARIABLES.py:326
+msgid "Macro Definition"
+msgstr ""
+"매크로 정의"
+
+#: SPSSINC_SELECT_VARIABLES.py:327
+msgid "Variables Listed in Macro %s"
+msgstr ""
+"매크로 %s에 나열된 변수"
+
+#: SPSSINC_SELECT_VARIABLES.py:330
+msgid "No matching variables"
+msgstr ""
+"매치하는 변수 없음"
+
+#: SPSSINC_SELECT_VARIABLES.py:349
+msgid "ALL must be the last item in the variable list"
+msgstr ""
+"ALL은 변수 목록의 마지막 항목이어야 합니다."
+
+
+
