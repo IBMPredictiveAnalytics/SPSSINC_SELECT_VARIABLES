@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>SPSSINC SELECT VARIABLES Extension Command</title>
+
+<link rel="stylesheet" type="text/css" href="extsyntax.css" />
+
+
+
+
+
+</head>
+
+<body>
+<h1>SPSSINC SELECT VARIABLES Extension Command</h1>
+
+<p>Define an SPSS macro whose contents are the names of all variables
+that meet the specified metadata selection criteria,
+which can include patterns in names, measurement level, custom attributes
+and other information.</p>
+<div class="syntax">
+<p>SPSSINC SELECT VARIABLES MACRONAME=&ldquo;<em>macroname</em>&rdquo;<sup>&#42;</sup><br/>
+VARIABLES=<em>variable list</em>  </p>
+
+<p>/PROPERTIES<br/>
+TYPE=NUMERIC or STRING<br/>
+LEVEL=NOMINAL ORDINAL SCALE UNKNOWN<br/>
+PATTERN=&ldquo;<em>name regular expression</em>&rdquo;<br/>
+ROLE=ANY<sup>&#42;&#42;</sup> INPUT TARGET BOTH NONE PARTITION SPLIT</p>
+
+<p>/ATTRHASANY <em>list-of-attribute-names</em></p>
+
+<p>/ATTRHASALL <em>list-of-attribute-names</em></p>
+
+<p>/ATTRVALUES NAME=<em>name</em> VALUE=&ldquo;<em>value</em>&rdquo; &ldquo;<em>value</em>&rdquo; &hellip;<br/>
+NAME1 &hellip; NAME5 and VALUE1 &hellip; VALUE5 repeat the structure of NAME and VALUE.</p>
+
+<p>/OPTIONS<br/>
+IFNONE=ERROR<sup>&#42;&#42;</sup> or CREATE<br/>
+ORDER=ALPHA<sup>&#42;&#42;</sup> or FILE or ASLISTED<br/>
+PRINT=YES<sup>&#42;&#42;</sup> or NO<br/>
+SEPARATOR=&ldquo;<em>text</em>&rdquo;</p>
+
+<p>/HELP</p>
+
+<p><sup>&#42;</sup> Required<br/>
+<sup>&#42;&#42;</sup> Default</p>
+</div>
+<p>SPSSINC SELECT VARIABLES /HELP displays this information and does nothing else.</p>
+
+
+
+<pre class="example"><code>SPSSINC SELECT VARIABLES MACRONAME=&quot;allnumeric&quot;
+/PROPERTIES TYPE=NUMERIC.
+</code></pre>
+
+<p><strong>MACRONAME</strong> specifies the name of the generated macro.  By convention, macro
+names should start with &ldquo;!&rdquo;.  It must be enclosed in quotes.</p>
+
+<p><strong>VARIABLES</strong> specifies
+an optional variable list to restrict the result to a subset of the listed variables.
+If no variable list is given, the selection criteria are applied to all of the variables.
+Note that variable names are case sensitive.</p>
+
+<p>TO and ALL can be used in the variable list.
+If ALL is used, it must be last.
+Using ALL caused all variables that are not already listed to be appended to the other
+listed variables.  It can thereby control the variable order in the macro
+if ASLISTED is used.</p>
+
+<h2>PROPERTIES</h2>
+
+<p><strong>TYPE</strong>, <strong>LEVEL</strong>, and <strong>PATTERN</strong> optionally specify further restrictions.<br/>
+<strong>TYPE</strong> can be NUMERIC or STRING.
+<strong>LEVEL</strong> can be one or more of the four measurement levels.
+<strong>PATTERN</strong> is a case-insensitive regular expression to be applied to the names.
+It must be enclosed in quotes.
+The pattern starts at the beginning of the name.</p>
+
+<p>Regular expression examples:</p>
+
+<ul>
+<li><code>&#39;age&#39;</code>  - any variable names starting with <code>age</code></li>
+<li><code>&#39;.*age&#39;</code>- any variable names that contain <code>age</code></li>
+<li><code>&#39;.*\d$&#39;</code> - any variable name that ends in a digit</li>
+</ul>
+
+<p>In Statistics Version 18 or later, the variable role can be used to restrict the
+list by specifying <strong>ROLE</strong>.  Multiple roles
+can be listed.  This is particularly useful in IBM SPSS Modeler.  </p>
+
+<h2>ATTRIBUTE subcommands</h2>
+
+<p>The three attribute subcommands specify restrictions based on variable custom attributes.
+Variable attributes are typically created with the VARIABLE ATTRIBUTE command.</p>
+
+<p>Attribute names listed on <strong>/ATTRHASANY</strong> mean that a variable must have at least
+one of the attribute names listed to qualify.  The attribute value does not matter.</p>
+
+<p>Attribute names listed on <strong>/ATTRHASALL</strong> mean that a variable must have all of
+the listed attributes to qualify.</p>
+
+<p><strong>/ATTRVALUES</strong> specifies pairs of attribute names and value lists.  For each
+pair, if the variable has the named attribute, the attribute value must be one
+of the values listed for that attribute.  If the variable does not have the attribute,
+the test is ignored.</p>
+
+<p>Examples:</p>
+
+<pre><code>/ATTRVALUES NAME=class VALUES=&quot;bird&quot; &quot;fish&quot; NAME1=region VALUE1=&quot;Asian&quot;.
+</code></pre>
+
+<p>For variables with the attribute <em>class</em> , the attribute value must be &ldquo;bird&rdquo; or &ldquo;fish&rdquo;
+and variables with the attribute <em>region</em> must have an attribute value of &ldquo;Asian&rdquo;</p>
+
+<p>Pairs are indicated by the suffix on the name and value keywords.  For example,
+the values in VALUE are applied to the attribute specified by NAME, and values in
+VALUE1 apply to the name in NAME1.</p>
+
+<p>The attribute names are not case sensitive, but the values, 
+which must be enclosed in quotes, are.</p>
+
+<p>For array attributes, a variable qualifies if any array value matches any of
+the listed values.</p>
+
+<h2>OPTIONS</h2>
+
+<p><strong>ORDER</strong> specifies the rule for the order of the selected variables in the macro
+definition.  The list can be sorted alphabetically or by the file order 
+of the variables.  If <strong>ORDER</strong>=ASLISTED, no sorting is done, so named
+variables will appear in that order, but ALL or property-selected
+variables will be in an arbitrary order.</p>
+
+<p><strong>PRINT</strong> specifies whether or not to print a table listing the variables in the macro.</p>
+
+<p><strong>IFNONE</strong> specifies whether to raise an error if no variables qualify or to
+define an empty macro.</p>
+
+<p><strong>SEPARATOR</strong> defines what character or string of characters is inserted
+between variable names in the macro.  By default it is a blank, but &ldquo;+&rdquo;
+is useful for building CTABLES table expressions.</p>
+
+<h3>For Developers</h3>
+
+<p>For Python programmers, a dictionary accessible from other modules is
+created holding the definitions of all the macros generated by this
+procedure.  It can be accessed as  </p>
+
+<pre><code>SPSSINC_SELECT_VARIABLES.macrodict[&quot;macroname&quot;]
+</code></pre>
+
+<p>after importing the module.</p>
+
+<p>&copy; Copyright IBM Corp. 1989, 2014</p>
+
+</body>
+
+</html>
+
