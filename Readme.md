@@ -1,5 +1,5 @@
 # SPSSINC SELECT VARIABLES
-## Define a macro listing variables selected according to variab
+## Define a macro listing variables selected according to variable dictionary properties
  This package provides a way to select variables based on   a combination of criteria.  The criteria can include names, patterns   in the names, variable type, measurement level, role, and custom attr  ibutes.  Using this method, jobs can be generalized so that they do n  ot require hard-wired variable names.
 
 ---
