@@ -1,0 +1,18 @@
+Name: SPSSINC SELECT VARIABLES
+Dialog-Specs: SPSSINC_SELECT_VARIABLES.spd
+Command-Specs: SPSSINC_SELECT_VARIABLES.xml
+Code-Files: SPSSINC_SELECT_VARIABLES.py
+Misc-Files: markdown.html,extsyntax.css,IBMdialogicon.png
+Summary: Define a macro listing variables selected according to variab
+ le dictionary properties
+Description: This package provides a way to select variables based on 
+ a combination of criteria.  The criteria can include names, patterns 
+ in the names, variable type, measurement level, role, and custom attr
+ ibutes.  Using this method, jobs can be generalized so that they do n
+ ot require hard-wired variable names.
+Author: JKP, IBM SPSS
+Version: 1.3.3
+Product-Version: 18
+Date: 5/4/2012
+Plugins: Python
+Translation-Catalogues: lang
