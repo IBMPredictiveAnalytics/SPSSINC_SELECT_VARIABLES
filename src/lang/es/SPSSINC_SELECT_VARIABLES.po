@@ -1,0 +1,74 @@
+#/***********************************************************************
+# * Licensed Materials - Property of IBM 
+# *
+# * IBM SPSS Products: Statistics Common
+# *
+# * (C) Copyright IBM Corp. 1989, 2014
+# *
+# * US Government Users Restricted Rights - Use, duplication or disclosure
+# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# ************************************************************************/
+
+# NLS_ENCODING=UTF-8
+# IBMUPYTH
+
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-12-08 14:55+China Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: SPSSINC_SELECT_VARIABLES.py:186
+msgid "---"
+msgstr ""
+"---"
+
+#: SPSSINC_SELECT_VARIABLES.py:246
+msgid "The attribute name and value pairs on ATTRVALUES do not match"
+msgstr ""
+"El atributo de nombre y los pares de valores de ATTRVALUES no coinciden"
+
+#: SPSSINC_SELECT_VARIABLES.py:253
+msgid "Invalid pattern regular expression: %s"
+msgstr ""
+"Expresión regular de patrón no válida: %s"
+
+#: SPSSINC_SELECT_VARIABLES.py:302
+msgid "No variables qualify for macro definition %s"
+msgstr ""
+"Ninguna variable sirve para definir una macro %s"
+
+#: SPSSINC_SELECT_VARIABLES.py:326
+msgid "Macro Definition"
+msgstr ""
+"Definición de macro"
+
+#: SPSSINC_SELECT_VARIABLES.py:327
+msgid "Variables Listed in Macro %s"
+msgstr ""
+"Variables listadas en la macro %s"
+
+#: SPSSINC_SELECT_VARIABLES.py:330
+msgid "No matching variables"
+msgstr ""
+"No hay variables coincidentes"
+
+#: SPSSINC_SELECT_VARIABLES.py:349
+msgid "ALL must be the last item in the variable list"
+msgstr ""
+"ALL debe ser el último elemento de la lista de variables"
+
+
+
