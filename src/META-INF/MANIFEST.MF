@@ -2,7 +2,7 @@ Name: SPSSINC SELECT VARIABLES
 Dialog-Specs: SPSSINC_SELECT_VARIABLES.spd
 Command-Specs: SPSSINC_SELECT_VARIABLES.xml
 Code-Files: SPSSINC_SELECT_VARIABLES.py
-Misc-Files: markdown.html,extsyntax.css,IBMdialogicon.png
+Misc-Files: extsyntax.css,IBMdialogicon.png,markdown.html
 Summary: Define a macro listing variables selected according to variab
  le dictionary properties
 Description: This package provides a way to select variables based on 
@@ -11,8 +11,10 @@ Description: This package provides a way to select variables based on
  ibutes.  Using this method, jobs can be generalized so that they do n
  ot require hard-wired variable names.
 Author: JKP, IBM SPSS
-Version: 1.3.3
-Product-Version: 18
+Version: 2.0.0
+Product-Version: 24
 Date: 5/4/2012
+Product-Version-Maximum: 99
 Plugins: Python
+Python-Version: 3
 Translation-Catalogues: lang

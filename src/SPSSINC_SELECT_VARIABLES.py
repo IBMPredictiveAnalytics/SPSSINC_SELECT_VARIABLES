@@ -3,7 +3,7 @@
 # *
 # * IBM SPSS Products: Statistics Common
 # *
-# * (C) Copyright IBM Corp. 1989, 2014
+# * (C) Copyright IBM Corp. 1989, 2020
 # *
 # * US Government Users Restricted Rights - Use, duplication or disclosure
 # * restricted by GSA ADP Schedule Contract with IBM Corp. 
@@ -11,7 +11,7 @@
 
 
 # Extension command for selecting variables and defining a macro
-from __future__ import with_statement
+
 
 __author__  =  'spss, jkp'
 __version__ =  '1.3.1'
@@ -134,12 +134,12 @@ after importing the module.
 import inspect, re, copy, sys
 import spss, spssaux
 from extension import Template, Syntax, processcmd
-ok1800 = spssaux.getSpssVersion() >=[18,0,0]
+ok1800 = spssaux.getSpssVersion() >=str([18,0,0])
 
 def Run(args):
     """Execute the SPSSINC SELECT VARIABLES command"""
 
-    args = args[args.keys()[0]]
+    args = args[list(args.keys())[0]]
     ###print args   #debug
 
     oobj = Syntax([
@@ -189,7 +189,7 @@ def Run(args):
             return msg
 
     # A HELP subcommand overrides all else
-    if args.has_key("HELP"):
+    if "HELP" in args:
         #print helptext
         helper()
     else:
@@ -209,7 +209,7 @@ def helper():
     # webbrowser.open seems not to work well
     browser = webbrowser.get()
     if not browser.open_new(helpspec):
-        print("Help file not found:" + helpspec)
+        print(("Help file not found:" + helpspec))
 try:    #override
     from extension import helper
 except:
@@ -277,7 +277,7 @@ def selectvariables(macroname, varnames=None, vartype=None, level=None, pattern=
         for v in resultset:
             # get variable attributes.  array attributes are returned with name attrname[index]
             # convert values into a list of items.  Order has no meaning
-            vattrs = dict([(k.lower(), val) for k, val in v.Attributes.items()])   # empty dict if no attributes
+            vattrs = dict([(k.lower(), val) for k, val in list(v.Attributes.items())])   # empty dict if no attributes
             listifyAttrs(vattrs)
             vattrset = set(vattrs)
             
@@ -288,7 +288,7 @@ def selectvariables(macroname, varnames=None, vartype=None, level=None, pattern=
                 removeset.add(v)
                 continue
             if avalsdict:  # if variable has the attribute but no value matches, discard variable
-                for ak,av in avalsdict.items():
+                for ak,av in list(avalsdict.items()):
                     if ak in vattrs:   # variable has the attribute.  See if any value matches
                         for a in vattrs[ak]:      # vattrs[ak] is a list of values
                             if  a in av:  # av is a (short) list
@@ -368,7 +368,7 @@ def listifyAttrs(vattrs):
     vattrs is the Attributes dictionary for a variable.
     array atributes appear as name[subscript] in the dictionary."""
     
-    vattrlist = vattrs.items()
+    vattrlist = list(vattrs.items())
     for k, v in vattrlist:
         subscript = k.find("[")
         if subscript > 0:   # can't be 0
@@ -448,7 +448,7 @@ def _isseq(obj):
         
         Will be False if obj is a string or basic data type"""
         
-        if isinstance(obj, basestring):
+        if isinstance(obj, str):
                 return False
         else:
                 try:
@@ -463,7 +463,7 @@ def attributesFromDict(d):
     # based on Python Cookbook, 2nd edition 6.18
 
     self = d.pop('self')
-    for name, value in d.iteritems():
+    for name, value in d.items():
         setattr(self, name, value)
 
         
@@ -483,7 +483,7 @@ def rolefilter(varnames, role):
         return varnames
     if varnames is None:
         roledict = getRole()
-        varnames = roledict.keys()
+        varnames = list(roledict.keys())
     else:
         roledict = getRole(varnames)
     varnames = [v for v in varnames if roledict[v.lower()] in role]
@@ -523,5 +523,5 @@ def getRole(varlist=""):
     spss.DeleteXPathHandle(tag)
     variables = [v.lower() for v in variables]
     rolelist = [v.lower() for v in rolelist]
-    return dict(zip(variables, rolelist))
+    return dict(list(zip(variables, rolelist)))
     
