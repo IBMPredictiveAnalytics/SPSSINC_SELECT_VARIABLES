@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Makro zur Auflistung ausgewählter Variablen definieren</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Makro zur Auflistung ausgewählter Variablen definieren</h1>
+Dieser Befehl ermöglicht das Definieren eines SPSS-Makros, dessen Wert aus
+einer Liste von Variablen besteht, die bestimmte Kriterien erfüllen (wie Messniveau, Typ, Variablenattribute und Muster in den Namen).
+<p>
+Auf diese Weise können Sie verallgemeinerte Syntaxjobs erstellen, bei denen es nicht
+erforderlich ist, dass die genauen Variablennamen in einer bestimmten Datendatei bekannt sind.  Beispielsweise könnten Sie einen Job erstellen, der entsprechende deskriptive Statistiken
+für die Variablen in einem Dataset auf der Basis ihrer Messniveaus anzeigt.
+
+<p><span class="runinhead">Makroname.</span>
+Geben Sie einen Namen für das zu generierende Makro ein.  Der Konvention folgend sollte ein Ausrufezeichen (!) als erstes Zeichen des Namens verwendet werden, um Konflikte mit Variablennamen zu vermeiden.
+
+<p><span class="runinhead">'Variablen' und 'Auswahl begrenzen auf'.</span> 
+Verschieben Sie Variablen in das Steuerelement <span class="screen">Auswahl begrenzen auf</span>, um das Ergebnis auf ein nur aus diesen Namen bestehendes Subset zu begrenzen.  Unter der Voraussetzung, dass keine anderen Kriterien angegeben sind, würde das Makro genau diese Namen definieren.
+<p class="bullet">&bull;Wenn das Begrenzungssteuerelement leer gelassen wird,
+werden die anderen Kriterien auf alle Variablen angewendet.
+
+<p><span class="runinhead">Variablentyp definieren.</span> 
+Begrenzen Sie die Auswahl auf numerische Variablen, Zeichenfolgevariablen oder auf beide Typen (keine Begrenzung).
+
+<p><span class="runinhead">Variablenniveau.</span> 
+Wählen Sie die für das Variablenmessniveau anzuwendenden Kriterien aus.
+
+<p><span class="runinhead">Variablenrolle.</span> 
+Ab Statistics Version 18 können Variablen Rollen zugewiesen werden.
+Wählen Sie das anzuwendende Rollenkriterium aus.  In Version 17 wird dieses Kriterium ignoriert.
+<p class="bullet">&bull;Die Rolle ist besonders hilfreich, wenn dieses Dialogfeld
+in Modeler verwendet werden soll.
+
+<p><span class="runinhead">Regulärer Ausdruck für Variablennamen.</span>
+Sie können einen <em>regulären Ausdruck</em> eingeben, um die Variablen auf der Basis der Namen zu filtern.
+Reguläre Ausdrücke beschreiben ein Zeichenmuster.
+Das Muster, bei dem die Groß-/Kleinschreibung nicht beachtet werden muss, beginnt mit dem ersten Zeichen des Namens.  Beispiele:
+
+<p>alter  - alle Variablen, die mit der Zeichenfolge 'alter' beginnen<br>
+<p>.*alter - alle Variablen, in deren Namen die Zeichenfolge 'alter' vorkommt<br>
+<p>.*\d$  - alle Variablen mit einem Namen, dessen letztes Zeichen eine Ziffer ist
+
+<h2>Attribute.</h2> 
+Im Unterdialogfeld 'Attribute' können auf der Basis von benutzerdefinierten Attributen Kriterien angegeben werden.
+Benutzerdefinierte Attribute sind Eigenschaften von Variablen, die mit dem Befehl VARIABLE ATTRIBUTE, Dialogfeld 'Variableneigenschaften definieren' oder im Dateneditor erstellt werden können.  Sie werden mit dem Dataset gespeichert.
+
+<p><span class="runinhead">Variablen müssen alle angegebenen Attribute aufweisen.</span> 
+Die ausgewählten Variablen müssen alle der hier genannten Attribute aufweisen.  Geben Sie einen oder mehrere durch ein Leerzeichen voneinander getrennte Attributnamen ein.  Der Wert des Attributs, sofern vorhanden, ist irrelevant.
+
+<p><span class="runinhead">Variablen müssen mindestens eines der angegebenen Attribute aufweisen.</span> 
+Variablen erfüllen dieses Kriterium, wenn sie mindestens eines der aufgelisteten Attribute aufweisen.
+Geben Sie einen oder mehrere durch ein Leerzeichen voneinander getrennte Attributnamen ein.
+Der Wert des Attributs, sofern vorhanden, ist irrelevant.  Bei den Namen muss die Groß-/Kleinschreibung nicht beachtet werden.
+
+<p><span class="runinhead">Attributwerte.</span>
+Geben Sie Attributnamen und Wertelisten ein, um die ausgewählten Variablen auf diejenigen zu beschränken,
+die diese Werte aufweisen.  Eingegeben werden können bis zu drei Sets von Namen und Werten.
+<p class="bullet">&bull;Jeder Wert muss in einfache oder doppelte Anführungszeichen eingeschlossen und, wenn mehrere Werte vorhanden sind, müssen diese durch ein Leerzeichen voneinander getrennt werden.  
+<p class="bullet">&bull;Bei den Werten muss die Groß-/Kleinschreibung beachtet werden:
+wenn ein Variablenattribut mit dem Namen <em>einheiten</em> den Wert <em>EUROS</em> hat, muss "EUROS" in das Wertfeld für Einheiten eingegeben werden, um die Variable auszuwählen.
+<p class="bullet">&bull;Weist die Variable kein angegebenes Attribut auf, wird der Test ignoriert.  Listen Sie das Attribut im Steuerelement <span class="screen">Variablen müssen alle angegebenen Attribute aufweisen</span> auf, um Variablen auszuschließen, die das Attribut nicht aufweisen.
+<p class="bullet">&bull;Handelt es sich bei dem Attribut um ein Array-Attribut, bei dem ein einzelnes Attribut über mehrere Werte verfügen kann,
+erfüllt die Variable die Kriterien, wenn eines der Werte im Array
+mit einem der Werte in der Liste <span class="screen">Attributwerte</span> übereinstimmt.
+
+<h2>Optionen</h2>
+<p><span class="runinhead">Reihenfolge der ausgewählten Variablen im Makro.</span>
+Sie können angeben, dass die vom Makro definierte Variablenliste in alphabetischer Reihenfolge oder
+in der Reihenfolge der Variablen in der Datei sortiert sein soll.  Bei Auswahl von 'Wie angegeben'
+werden alle in der Liste 'Auswahl begrenzen auf' vorhandenen Variablen, die die anderen Bedingungen erfüllen, in der Reihenfolge dargestellt, die in der Makrodefinition angegeben ist.
+
+<p><span class="runinhead">Wenn keine Variablen ausgewählt sind.</span> 
+Wenn keine Variablen die Auswahlkriterien erfüllen, können Sie entweder einen Fehler ausgeben und das Makro nicht definieren oder Sie können mit dem Vorgang fortfahren und ein leeres Makro generieren.
+Das leere Makro könnte dann mithilfe des Makrocodes zu einem späteren Zeitpunkt getestet werden, um zu vermeiden, dass Fehler generiert werden, weil das Makro leer ist.
+
+<p><span class="runinhead">Makrodefinition ausgeben.</span> 
+Wählen Sie aus, ob der Inhalt des Makros in einer Pivot-Tabelle aufgelistet werden soll.
+
+<p><span class="runinhead">Trennzeichen.</span> 
+Wählen Sie aus, ob Variablennamen in der Makrodefinition durch ein Leerzeichen oder ein Pluszeichen voneinander getrennt werden sollen.  Das Pluszeichen ist bei TABLE-Ausdrücken bei benutzerdefinierten Tabellen nützlich.
+
+<h2>Weitere Funktionen</h2>
+Führen Sie den folgenden Befehl aus:<br>
+SPSSINC SELECT VARIABLES /HELP.<br>
+Sie zeigen damit die vollständige Syntaxbeschreibung an.
+<p>Hinweis für Python-Programmierer: Über SPSSINC_SELECT_VARIABLES.macrodict besteht Zugriff auf ein Wörterbuch mit den über diesen Befehl definierten Makros.
+<p>Es besteht die Möglichkeit, eine Liste von Rollen anzugeben.</p>
+<p>TO und ALL können in der Syntax zusammen mit bestimmten Variablen verwendet werden.</p>
+
+<h2>Anforderungen</h2>
+Dieser Befehl erfordert das Python-Programmierungs-Plug-in. Sie finden das Python-Plug-in auf der IBM SPSS Statistics-CD oder Sie können es über SPSS Developer Central (www.spss.com/devcentral) herunterladen.</p>
+  <hr>
+  <p style="font-size:80%;">
+  Copyright IBM Corp. 2014</p>
+</body>
+</html>
+

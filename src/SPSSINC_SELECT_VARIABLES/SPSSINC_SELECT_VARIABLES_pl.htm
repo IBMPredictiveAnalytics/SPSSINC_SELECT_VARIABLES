@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Zdefiniuj makro wyświetlające listę wybranych zmiennych</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Zdefiniuj makro wyświetlające listę wybranych zmiennych</h1>
+Za pomocą tej komendy można zdefiniować makro SPSS, którego wartością jest lista zmiennych spełniających kryteria takie jak poziom pomiaru, typ, atrybuty zmiennych i wzorce w nazwach.
+<p>
+W ten sposób można wygenerować uogólnione zadania składni, w przypadku których nie trzeba znać dokładnych nazw zmiennych w określonym pliku danych.  Przykładowo: można utworzyć zadanie pozwalające na wyświetlenie odpowiednich statystyk opisowych w przypadku zmiennych zawartych w zbiorze danych, bazując na ich poziomach pomiarów.
+
+<p><span class="runinhead">Nazwa makra.</span>
+Wprowadź nazwę makra, które zostanie wygenerowane.  Zwykle nazwy rozpoczynają się od znaku "!". Pozwala to uniknąć konfliktu z nazwami zmiennych.
+
+<p><span class="runinhead">Zmienne i ograniczenie wyboru do.</span>
+Przenieś zmienne do obszaru <span class="screen">Ogranicz wybór do</span> w celu ograniczenia wyboru do grupy tylko tych nazw.  Jeśli nie określono innych kryteriów, makro zdefiniuje dokładnie te nazwy.
+<p class="bullet">&bull;Jeśli pole Ogranicz pozostanie puste, inne kryteria zostaną zastosowane do wszystkich zmiennych.
+
+<p><span class="runinhead">Typ zmiennej.</span>
+Ogranicz wybór do zmiennych liczbowych, łańcuchowych lub obydwu typów (bez ograniczenia).
+
+<p><span class="runinhead">Poziom zmiennej.</span>
+Wybierz kryteria poziomu pomiaru zmiennej do zastosowania.
+
+<p><span class="runinhead">Rola zmiennej.</span>
+W programie Statistics w wersji 18 lub nowszej do zmiennych można przypisywać role.
+Wybierz kryteria roli do zastosowania.  W wersji 17 te kryteria zostaną zignorowane.
+<p class="bullet">&bull;Role są bardzo użyteczne, jeśli to okno dialogowe zostanie użyte w programie Modeler.
+
+<p><span class="runinhead">Wyrażenie regularne nazwy zmiennej.</span>
+Za pomocą <em>wyrażenia regularnego</em> można filtrować zmienne w oparciu o nazwy.
+Wyrażenia regularne opisują wzory znaków.
+We wzorach nie są rozróżniane wielkości liter i rozpoczynają się one na początku nazwy.  Przykłady:
+
+<p>age - zmienne rozpoczynające się ciągiem age<br>
+<p>.*age - zmienne, których nazwa zawiera ciąg age<br>
+<p>.*\d$  - zmienne, których nazwa kończy się cyfrą
+
+<h2>Atrybuty.</h2> 
+Podrzędne okno dialogowe Atrybuty umożliwia określenie kryteriów w oparciu o niestandardowe atrybuty.
+Niestandardowe atrybuty to właściwości zmiennych, które można tworzyć za pomocą komendy VARIABLE ATTRIBUTE, w oknie dialogowym Zdefiniuj właściwości zmiennej lub w edytorze danych.  Są one zapisywane wraz ze zbiorem danych.
+
+<p><span class="runinhead">Zmienne muszą zawierać wszystkie te atrybuty.</span>
+Wybrane zmienne muszą zawierać wszystkie wymienione tu atrybuty.  Wprowadź co najmniej jedną nazwę atrybutu. Wiele nazw rozdziel spacjami.  Wartość atrybutu (o ile istnieje) jest bez znaczenia.
+
+<p><span class="runinhead">Zmienne muszą zawierać przynajmniej jeden z tych atrybutów.</span>
+Zmienne spełnią to kryterium, jeśli będą zawierać przynajmniej jeden z atrybutów dostępnych na liście.
+Wprowadź co najmniej jedną nazwę atrybutu. Wiele nazw rozdziel spacjami.
+Wartość atrybutu (o ile istnieje) jest bez znaczenia.  W nazwach nie jest rozróżniana wielkość liter.
+
+<p><span class="runinhead">Wartości atrybutów.</span>
+Wprowadź nazwy atrybutów i listy wartości w celu ograniczenia wybranych zmiennych do zmiennych zawierających tylko dane wartości.  Można wprowadzić maksymalnie trzy zbiory nazw i wartości.
+<p class="bullet">&bull;Każda wartość musi być ujęta w pojedynczy lub podwójny cudzysłów, a w przypadku wielu wartości należy je rozdzielić znakami spacji.
+<p class="bullet">&bull;W przypadku wartości rozróżniana jest wielkość liter: jeśli atrybut zmiennej o nazwie <em>jednostki</em> ma wartość <em>EURO</em>, w celu wybrania zmiennej w polu wartości należy wpisać "EURO".
+<p class="bullet">&bull;Jeśli dla zmiennej nie określono atrybutu, test jest ignorowany.  Atrybut należy wyświetlić na liście w obszarze <span class="screen">Zmienne muszą zawierać wszystkie te atrybuty</span> w celu wykluczenia zmiennych, które nie zawierają danego atrybutu.
+<p class="bullet">&bull;Jeśli atrybut jest atrybutem tablicy, gdy może istnieć wiele wartości pojedynczego atrybutu, zmienna spełnia kryteria, o ile dowolna wartość w tablicy odpowiada wartości na liście <span class="screen">Wartości atrybutów</span>.
+
+<h2>Opcje</h2>
+<p><span class="runinhead">Kolejność zmiennych wybranych w makrze.</span>
+Można określić, że lista zmiennych zdefiniowana za pomocą makra jest uporządkowana alfabetycznie lub zgodnie z kolejnością zmiennych w pliku.  Jeśli wybrana jest opcja Zgodnie z listą, zmienne na liście Ogranicz wybór do spełniające inne warunki zostaną wyświetlone w danej kolejności w definicji makra.
+
+<p><span class="runinhead">Jeśli nie wybrano żadnych zmiennych.</span>
+Jeśli żadne zmienne nie spełniają kryteriów wyboru, można zgłosić błąd i nie definiować makra lub kontynuować i wygenerować puste makro.
+Puste makro można następnie przetestować za pomocą kodu makra w celu uniknięcia generowania błędów spowodowanych faktem, że makro jest puste.
+
+<p><span class="runinhead">Drukuj definicję makra.</span>
+Należy określić, czy zawartość makra znajduje się w tabeli przestawnej czy nie.
+
+<p><span class="runinhead">Znak separatora.</span>
+Określ, czy nazwy zmiennych w definicji makra zostaną rozdzielone spacją czy znakiem plus.  Znak plus jest użyteczny w przypadku wyrażeń TABLE tabel niestandardowych.
+
+<h2>Funkcje dodatkowe</h2>
+Uruchom komendę<br>
+SPSSINC SELECT VARIABLES /HELP.<br>
+w celu wyświetlenia opisu całej składni.
+<p>Dla programistów Python: dostęp do słownika makr zdefiniowanych za pomocą tej komendy można uzyskać za pomocą komendy SPSSINC_SELECT_VARIABLES.macrodict.
+<p>Można określić listę ról.</p>
+<p>TO i ALL można użyć w komendzie wraz z określonymi zmiennymi.</p>
+
+<h2>Wymagania</h2>
+Ta komenda wymaga wtyczki Python
+  Programmability, którą można znaleźć na dysku instalacyjnym IBM
+  SPSS Statistics lub pobrać z serwisu SPSS Community pod adresem www.ibm.com/developerworks/spssdevcentral/.</p>
+  <hr>
+  <p style="font-size:80%;">
+  Copyright IBM Corp. 2014</p>
+</body>
+</html>
+

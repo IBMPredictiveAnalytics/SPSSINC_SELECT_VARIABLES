@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Extension debug="false" version="1.0" xmlns="http://spss.com/clementine/extensions" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://spss.com/clementine/extensions http://xml.spss.com/clementine/extensions/CLEFSpecificationFile.xsd">
+	<ExtensionDetails copyright="Licensed Materials - Property of IBM.  IBM SPSS Products: Statistics Common (C) Copyright IBM Corp. 1989, 2014.  US Government Users Restricted Rights - Use, duplication or  disclosure restricted by GSA ADP Schedule Contract with IBM Corp." description="" id="SPSSINC_SELECT_VARIABLES" label="" provider="SPSS, Inc." providerTag="spss" version="1.0"/>
+	<Resources>
+		<Bundle id="bundle1" path="SPSSINC_SELECT_VARIABLES" type="properties"/>
+	</Resources>
+	<CommonObjects>
+		<Actions>
+			<Action id="SPSSINC_SELECT_VARIABLES_action" imagePath="IBMdialogicon.png" label="Define Variable Macro" labelKey="SPSSINC_SELECT_VARIABLES_action.LABEL"/>
+		</Actions>
+	</CommonObjects>
+	<UserInterface>
+		<Controls>
+			<MenuItem action="SPSSINC_SELECT_VARIABLES_action" offset="8" showIcon="true" spssMenu="Utilities"/>
+		</Controls>
+	</UserInterface>
+	<Node id="SPSSINC_SELECT_VARIABLES" label="Define Variable Selection Macro" labelKey="SPSSINC_SELECT_VARIABLES.LABEL" type="modelBuilder">
+		<Properties>
+			<Property name="SPSSINC_SELECT_VARIABLES" syntax="SPSSINC SELECT VARIABLES %%macroname%% %%variables%%&#10;/PROPERTIES %%variabletype%% %%VariableLevel%% %%pattern%%&#10;%%attrhasall%%&#10;%%attrhasany%%&#10;%%attrvalues%%&#10;%%role%%&#10;/OPTIONS %%macroorder%% %%print%% %%ifnone%% %%sepch%%"/>
+			<Property description="false" name="SPSSINC_SELECT_VARIABLES_modal"/>
+			<Property description="" descriptionKey="source_vars_tooltip.LABEL" isList="true" label="Variables:" labelKey="source_vars.LABEL" name="source_vars" selectionPool="source_fields" syntax="%%ThisValue%%" valueType="field"/>
+			<Property defaultValue="" description="" descriptionKey="macroname_tooltip.LABEL" isRequired="true" label="Macro Name (by convention starting with !):" labelKey="macroname.LABEL" name="macroname" syntax="MACRONAME=&quot;%%ThisValue%%&quot;" valueType="string"/>
+			<Property description="Variables will be a subset of variables included here.  Leave empty to select from all variables" descriptionKey="variables_tooltip.LABEL" isList="true" label="Limit Selection to:" labelKey="variables.LABEL" name="variables" selectionPool="source_fields" syntax="VARIABLES=%%ThisValue%%" valueType="field"/>
+			<Property description="" descriptionKey="VariableLevel_tooltip.LABEL" label="Variable Level" labelKey="VariableLevel.LABEL" name="VariableLevel" syntax="LEVEL=%%ThisValue%%"/>
+			<Property defaultValue="true" description="Nominal and ordinal levels are categorical" descriptionKey="nominal_tooltip.LABEL" label="Nominal" labelKey="nominal.LABEL" name="nominal" syntax="NOMINAL±" valueType="boolean"/>
+			<Property defaultValue="true" description="Nominal and ordinal levels are categorical" descriptionKey="ordinal_tooltip.LABEL" label="Ordinal" labelKey="ordinal.LABEL" name="ordinal" syntax="ORDINAL±" valueType="boolean"/>
+			<Property defaultValue="true" description="" descriptionKey="scale_tooltip.LABEL" label="Scale" labelKey="scale.LABEL" name="scale" syntax="SCALE±" valueType="boolean"/>
+			<Property defaultValue="true" description="" descriptionKey="unknown_tooltip.LABEL" label="Unknown" labelKey="unknown.LABEL" name="unknown" syntax="UNKNOWN±" valueType="boolean"/>
+			<Property defaultValue="" description="Names must match this regular expression pattern starting at the beginning" descriptionKey="pattern_tooltip.LABEL" label="Variable Name Regular Expression:" labelKey="pattern.LABEL" name="pattern" syntax="PATTERN = &quot;%%ThisValue%%&quot;" valueType="string"/>
+			<Property defaultValue="" description="Enter a list of attribute names separated by a blank" descriptionKey="attrhasall_tooltip.LABEL" label="Variables must have all of these attributes:" labelKey="attrhasall.LABEL" name="attrhasall" syntax="/ATTRHASALL %%ThisValue%%" valueType="string"/>
+			<Property defaultValue="" description="Enter a list of attribute names" descriptionKey="attrhasany_tooltip.LABEL" label="Variables must have at least one of these attributes:" labelKey="attrhasany.LABEL" name="attrhasany" syntax="/ATTRHASANY %%ThisValue%%" valueType="string"/>
+			<Property description="" descriptionKey="attrvalues_tooltip.LABEL" label="Attribute Values" labelKey="attrvalues.LABEL" name="attrvalues" syntax="/ATTRVALUES %%ThisValue%%"/>
+			<Property defaultValue="" description="" descriptionKey="attrname_tooltip.LABEL" label="Attribute Name:" labelKey="attrname.LABEL" name="attrname" syntax="NAME=%%ThisValue%%" valueType="fieldName"/>
+			<Property defaultValue="" description="Enter one or more values, each enclosed in quotes" descriptionKey="attrvalue_tooltip.LABEL" label="Attribute Values:" labelKey="attrvalue.LABEL" name="attrvalue" syntax="VALUE = %%ThisValue%%" valueType="string"/>
+			<Property defaultValue="" description="" descriptionKey="attrname1_tooltip.LABEL" label="Attribute Name:" labelKey="attrname1.LABEL" name="attrname1" syntax="NAME1 = %%ThisValue%%" valueType="fieldName"/>
+			<Property defaultValue="" description="Enter one or more values, each enclosed in quotes" descriptionKey="attrvalue1_tooltip.LABEL" label="Attribute Values:" labelKey="attrvalue1.LABEL" name="attrvalue1" syntax="VALUE1 = %%ThisValue%%" valueType="string"/>
+			<Property defaultValue="" description="" descriptionKey="attrname2_tooltip.LABEL" label="Attribute Name:" labelKey="attrname2.LABEL" name="attrname2" syntax="NAME2 = %%ThisValue%%" valueType="string"/>
+			<Property defaultValue="" description="Enter one or more values, each enclosed in quotes" descriptionKey="attrvalue2_tooltip.LABEL" label="Attribute Values:" labelKey="attrvalue2.LABEL" name="attrvalue2" syntax="VALUE2 = %%ThisValue%%" valueType="string"/>
+			<Property defaultValue="alpha" description="" descriptionKey="macroorder_tooltip.LABEL" label="Order of Selected Variables in Macro" labelKey="macroorder.LABEL" name="macroorder" syntax="ORDER=%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum description="" descriptionKey="alpha_tooltip.LABEL" hasSubGroup="false" label="Alphabetical" labelKey="alpha.LABEL" mnemonic="A" mnemonicKey="alpha_mnemonic.VALUE" syntax="ALPHA" value="alpha"/>
+					<Enum description="" descriptionKey="file_tooltip.LABEL" hasSubGroup="false" label="Order in file" labelKey="file.LABEL" mnemonic="F" mnemonicKey="file_mnemonic.VALUE" syntax="FILE" value="file"/>
+					<Enum description="Qualifying Limit Selection to variables will appear in listed order" descriptionKey="aslisted_tooltip.LABEL" hasSubGroup="false" label="As listed" labelKey="aslisted.LABEL" mnemonic="L" mnemonicKey="aslisted_mnemonic.VALUE" syntax="ASLISTED" value="aslisted"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="true" description="Creates a table displaying the macro definition" descriptionKey="print_tooltip.LABEL" label="Print macro definition" labelKey="print.LABEL" name="print" syntax="PRINT=YES±PRINT=NO" valueType="boolean"/>
+			<Property defaultValue="raiseerror" description="" descriptionKey="ifnone_tooltip.LABEL" label="If No Variables Are Selected" labelKey="ifnone.LABEL" name="ifnone" syntax="IFNONE=%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum description="" descriptionKey="raiseerror_tooltip.LABEL" hasSubGroup="false" label="Error: do not generate macro" labelKey="raiseerror.LABEL" mnemonic="E" mnemonicKey="raiseerror_mnemonic.VALUE" syntax="ERROR" value="raiseerror"/>
+					<Enum description="" descriptionKey="item_48_b_tooltip.LABEL" hasSubGroup="false" label="Generate empty macro" labelKey="item_48_b.LABEL" mnemonic="G" mnemonicKey="item_48_b_mnemonic.VALUE" syntax="CREATE" value="item_48_b"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="blanksep" description="Character to insert between variable names in macro result" descriptionKey="sepch_tooltip.LABEL" label="Separator Character" labelKey="sepch.LABEL" name="sepch" syntax="SEPARATOR=%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum description="" descriptionKey="blanksep_tooltip.LABEL" hasSubGroup="false" label="Blank" labelKey="blanksep.LABEL" mnemonic="B" mnemonicKey="blanksep_mnemonic.VALUE" syntax="&quot; &quot;" value="blanksep"/>
+					<Enum description="+ is useful in Custom Tables Table expressions" descriptionKey="plussep_tooltip.LABEL" hasSubGroup="false" label="Plus sign" labelKey="plussep.LABEL" mnemonic="P" mnemonicKey="plussep_mnemonic.VALUE" syntax="&quot;+&quot;" value="plussep"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="Any" description="" descriptionKey="variabletype_tooltip.LABEL" label="Variable Type" labelKey="variabletype.LABEL" name="variabletype" syntax="%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum description="" descriptionKey="Any_tooltip.LABEL" hasSubGroup="false" label="Any" labelKey="Any.LABEL" mnemonic="N" mnemonicKey="Any_mnemonic.VALUE" value="Any"/>
+					<Enum description="" descriptionKey="Numeric_tooltip.LABEL" hasSubGroup="false" label="Numeric only" labelKey="Numeric.LABEL" mnemonic="U" mnemonicKey="Numeric_mnemonic.VALUE" syntax="TYPE=NUMERIC" value="Numeric"/>
+					<Enum description="" descriptionKey="String_tooltip.LABEL" hasSubGroup="false" label="String only" labelKey="String.LABEL" mnemonic="S" mnemonicKey="String_mnemonic.VALUE" syntax="TYPE=STRING" value="String"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="any" description="Variable role - available in Statistics 18 or later; ignored in version 17" descriptionKey="role_tooltip.LABEL" label="Variable Role (version 18 or later):" labelKey="role.LABEL" name="role" syntax="ROLE=%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum label="Any" labelKey="any.LABEL" syntax="ANY" value="any"/>
+					<Enum label="Input" labelKey="input.LABEL" syntax="INPUT" value="input"/>
+					<Enum label="Target" labelKey="target.LABEL" syntax="TARGET" value="target"/>
+					<Enum label="Both input and target" labelKey="both.LABEL" syntax="BOTH" value="both"/>
+					<Enum label="None" labelKey="none.LABEL" syntax="NONE" value="none"/>
+					<Enum label="Partition" labelKey="partition.LABEL" syntax="PARTITION" value="partition"/>
+					<Enum label="Split" labelKey="split.LABEL" syntax="SPLIT" value="split"/>
+				</Enumeration>
+			</Property>
+		</Properties>
+		<SelectionPool id="source_fields" type="fields"/>
+		<UserInterface>
+			<Tabs>
+				<Tab helpLink="SPSSINC_SELECT_VARIABLES.htm">
+					<PropertiesPanel>
+						<SourceFieldsBrowser copyFields="false" property="source_vars" selectionPool="source_fields" storage="[real integer date time string]">
+							<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+						</SourceFieldsBrowser>
+						<StaticText text="Use this dialog to define a macro listing variables selected \naccording to specified criteria" textKey="item_3.LABEL">
+							<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+						</StaticText>
+						<TextBoxControl mnemonic="M" mnemonicKey="macroname_mnemonic.VALUE" property="macroname">
+							<Layout columnWeight="1.0" fill="horizontal" gridColumn="2" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+						</TextBoxControl>
+						<MultiFieldChooserControl mnemonic="L" mnemonicKey="variables_mnemonic.VALUE" property="variables" storage="[real integer date time string]">
+							<Layout columnWeight="1.0" fill="both" gridColumn="2" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+						</MultiFieldChooserControl>
+						<PropertiesPanel id="VariableLevel" label="Variable Level" labelKey="VariableLevel.LABEL">
+							<Layout columnWeight="1.0" fill="both" gridColumn="2" gridRow="2" gridWidth="1" rowWeight="1.0"/>
+							<CheckBoxControl mnemonic="A" mnemonicKey="nominal_mnemonic.VALUE" property="nominal">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="O" mnemonicKey="ordinal_mnemonic.VALUE" property="ordinal">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="C" mnemonicKey="scale_mnemonic.VALUE" property="scale">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="2" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="K" mnemonicKey="unknown_mnemonic.VALUE" property="unknown">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="3" gridWidth="1" rowWeight="1.0"/>
+							</CheckBoxControl>
+						</PropertiesPanel>
+						<TextBoxControl mnemonic="X" mnemonicKey="pattern_mnemonic.VALUE" property="pattern">
+							<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="3" gridWidth="1" rowWeight="0.0"/>
+						</TextBoxControl>
+						<PropertiesSubPanel buttonDescription="Use this subdialog to limit selection based on variable attributes" buttonDescriptionKey="attributes_tooltip.LABEL" buttonLabel="Attributes..." buttonLabelKey="attributes.LABEL" dialogTitle="Variable Attributes Criteria" dialogTitleKey="variableattributes.TITLE" helpLink="" mnemonic="A" mnemonicKey="attributes_mnemonic.VALUE">
+							<Layout columnWeight="0.0" fill="none" gridColumn="3" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+							<PropertiesPanel>
+								<TextBoxControl mnemonic="A" mnemonicKey="attrhasall_mnemonic.VALUE" property="attrhasall">
+									<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+								</TextBoxControl>
+								<TextBoxControl mnemonic="B" mnemonicKey="attrhasany_mnemonic.VALUE" property="attrhasany">
+									<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="0.0"/>
+								</TextBoxControl>
+								<StaticText text="Value tests are applied only if the variable has the attribute" textKey="item_40.LABEL">
+									<Layout columnWeight="1.0" fill="none" gridColumn="1" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+								</StaticText>
+								<StaticText text="Variable attributes are custom properties.\nThey can be defined by the VARIABLE ATTRIBUTE \ncommand or in Define Variable Properties \nor in the Data Editor" textKey="item_41.LABEL">
+									<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="2" gridWidth="1" rowWeight="1.0"/>
+								</StaticText>
+								<PropertiesPanel id="attrvalues" label="Attribute Values" labelKey="attrvalues.LABEL">
+									<Layout columnWeight="1.0" fill="both" gridColumn="1" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+									<StaticText text="Each value must be enclosed in quotes" textKey="item_225.LABEL">
+										<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+									</StaticText>
+									<TextBoxControl mnemonic="N" mnemonicKey="attrname_mnemonic.VALUE" property="attrname">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="0.0"/>
+									</TextBoxControl>
+									<TextBoxControl mnemonic="V" mnemonicKey="attrvalue_mnemonic.VALUE" property="attrvalue">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="2" gridWidth="1" rowWeight="0.0"/>
+									</TextBoxControl>
+									<StaticText text="" textKey="item_47.LABEL">
+										<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="3" gridWidth="1" rowWeight="0.0"/>
+									</StaticText>
+									<TextBoxControl mnemonic="T" mnemonicKey="attrname1_mnemonic.VALUE" property="attrname1">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="4" gridWidth="1" rowWeight="0.0"/>
+									</TextBoxControl>
+									<TextBoxControl mnemonic="E" mnemonicKey="attrvalue1_mnemonic.VALUE" property="attrvalue1">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="5" gridWidth="1" rowWeight="0.0"/>
+									</TextBoxControl>
+									<StaticText text="" textKey="item_48.LABEL">
+										<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="6" gridWidth="1" rowWeight="0.0"/>
+									</StaticText>
+									<TextBoxControl mnemonic="I" mnemonicKey="attrname2_mnemonic.VALUE" property="attrname2">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="7" gridWidth="1" rowWeight="0.0"/>
+									</TextBoxControl>
+									<TextBoxControl mnemonic="L" mnemonicKey="attrvalue2_mnemonic.VALUE" property="attrvalue2">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="8" gridWidth="1" rowWeight="1.0"/>
+									</TextBoxControl>
+								</PropertiesPanel>
+							</PropertiesPanel>
+						</PropertiesSubPanel>
+						<PropertiesSubPanel buttonLabel="Options..." buttonLabelKey="options.LABEL" dialogTitle="Options" dialogTitleKey="optionsdialog.TITLE" helpLink="" mnemonic="O" mnemonicKey="options_mnemonic.VALUE">
+							<Layout columnWeight="0.0" fill="none" gridColumn="3" gridRow="1" gridWidth="1" rowWeight="0.0"/>
+							<PropertiesPanel>
+								<RadioButtonGroupControl property="macroorder" rows="3" useSubPanel="false">
+									<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="1.0"/>
+									<RadioButton property="alpha"/>
+									<RadioButton property="file"/>
+									<RadioButton property="aslisted"/>
+								</RadioButtonGroupControl>
+								<CheckBoxControl mnemonic="M" mnemonicKey="print_mnemonic.VALUE" property="print">
+									<Layout columnWeight="1.0" fill="none" gridColumn="1" gridRow="1" gridWidth="1" rowWeight="0.0"/>
+								</CheckBoxControl>
+								<RadioButtonGroupControl property="ifnone" rows="2" useSubPanel="false">
+									<Layout columnWeight="1.0" fill="both" gridColumn="1" gridRow="0" gridWidth="1" rowWeight="1.0"/>
+									<RadioButton property="raiseerror"/>
+									<RadioButton property="item_48_b"/>
+								</RadioButtonGroupControl>
+								<RadioButtonGroupControl property="sepch" rows="2" useSubPanel="false">
+									<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+									<RadioButton property="blanksep"/>
+									<RadioButton property="plussep"/>
+								</RadioButtonGroupControl>
+							</PropertiesPanel>
+						</PropertiesSubPanel>
+						<StaticText text="This dialog requires the Python programmability plug-in" textKey="item_38.LABEL">
+							<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="4" gridWidth="1" rowWeight="0.0"/>
+						</StaticText>
+						<RadioButtonGroupControl property="variabletype" rows="3" useSubPanel="false">
+							<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="2" gridWidth="1" rowWeight="1.0"/>
+							<RadioButton property="Any"/>
+							<RadioButton property="Numeric"/>
+							<RadioButton property="String"/>
+						</RadioButtonGroupControl>
+						<ComboBoxControl attr_name="" based_on="variable_names" mnemonic="V" mnemonicKey="role_mnemonic.VALUE" property="role" target_id="" use_values="false">
+							<Layout columnWeight="1.0" fill="horizontal" gridColumn="2" gridRow="3" gridWidth="1" rowWeight="0.0"/>
+						</ComboBoxControl>
+						<StaticText text="This dialog was created using a later version of PASW Statistics\nand certain features may not function as intended." textKey="v17_warning.LABEL">
+							<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="5" gridWidth="1" rowWeight="1.0"/>
+						</StaticText>
+					</PropertiesPanel>
+				</Tab>
+			</Tabs>
+		</UserInterface>
+	</Node>
+</Extension>

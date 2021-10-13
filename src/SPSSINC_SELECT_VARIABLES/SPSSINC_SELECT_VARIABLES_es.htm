@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Definir una macro que ofrezca una lista de las variables seleccionadas</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Definir una macro que ofrezca una lista de las variables seleccionadas</h1>
+Este comando ofrece una forma de definir una macro de SPSS cuyo valor es una lista de variables que cumplen criterios como nivel de medición, tipo, atributos de variables y patrones en los nombres.
+<p>
+Mediante este método, puede crear trabajos de sintaxis generalizados que no dependan de conocer los nombres exactos de variables en un archivo de datos determinado.  Por ejemplo, puede crear un trabajo que muestre estadísticos descriptivos adecuados para las variables de un conjunto de datos en función de su nivel de medición.
+
+<p><span class="runinhead">Nombre de macro.</span>
+Especifique un nombre para la macro que se va a generar.  Es una convención empezar el nombre con "!" para evitar conflictos con otros nombres de variables.
+
+<p><span class="runinhead">Variables y Limitar la selección a.</span> 
+Mueva las variables al control <span class="screen">Limitar la selección a</span> para restringir el resultado a un subconjunto de sólo esos nombres.  Si no se especifica ningún otro criterio, la macro definiría esos nombres con exactitud.
+<p class="bullet">&bull;Si el control de límite se deja vacío, el otro criterio se aplicaría a todas las variables.
+
+<p><span class="runinhead">Tipo de variable.</span> 
+Limita la selección a variables numéricas, variables de cadena o a los dos tipos (sin límite).
+
+<p><span class="runinhead">Nivel de variable.</span> 
+Seleccione el criterio de nivel de medición de variable que se va a aplicar.
+
+<p><span class="runinhead">Función de variable.</span> 
+En Statistics versión 18 o posterior, las variables pueden tener funciones asignadas.
+Seleccione el criterio de función que vaya a aplicar.  En la versión 17, este criterio se ignora.
+<p class="bullet">&bull;La función resulta particularmente útil si este cuadro de diálogo se va a utilizar en Modeler.
+
+<p><span class="runinhead">Expresión regular de nombre de variable.</span>
+Puede especificar <em>expresión regular</em> para filtrar las variables en función de los nombres.
+Las expresiones regulares describen un patrón de caracteres.
+El patrón no es sensible a las mayúsculas y minúsculas y se inicia al principio del nombre.  Ejemplos:
+
+<p>age  - cualquier variable que empiece por age<br>
+<p>.*age - cualquier variable cuyo nombre contenga age<br>
+<p>.*\d$  - cualquier variable cuyo nombre termine con un dígito
+
+<h2>Atributos</h2> 
+El subcuadro de diálogo Atributos permite especificar criterios en función de los atributos personalizados.
+Los atributos personalizados son propiedades de variables que se pueden crear mediante el comando VARIABLE ATTRIBUTE, mediante el cuadro de diálogo Definir propiedades de variables o en el Editor de datos.  Se guardan con el conjunto de datos.
+
+<p><span class="runinhead">Las variables deben tener todos estos atributos.</span> 
+Las variables seleccionadas deben tener todos los atributos nombrados aquí.  Escriba uno o más nombres de atributos separados por un espacio en blanco.  El valor del atributo, de haber alguno, no importa.
+
+<p><span class="runinhead">Las variables deben tener al menos uno de estos atributos.</span> 
+Las variables cumplirán este criterio si tienen al menos uno de los atributos enumerados.
+Escriba uno o más nombres de atributos separados por un espacio en blanco.
+El valor del atributo, de haber alguno, no importa.  Los nombres no son sensibles a mayúsculas y minúsculas.
+
+<p><span class="runinhead">Valores del atributo.</span>
+Escriba nombres de atributo y listas de valores para restringir las variables seleccionadas a aquellas que tengan esos valores.  Puede especificar hasta tres conjuntos de nombres y valores.
+<p class="bullet">&bull;Cada valor debe estar entre comillas dobles o sencillas y, si hay más de un valor, debe separarlos por un espacio en blanco.  
+<p class="bullet">&bull;Los valores son sensibles a las mayúsculas y minúsculas: si un atributo de variable llamado <em>unidades</em> tiene un valor de <em>EUROS</em>, debe especificar "EUROS" en el campo de valor de las unidades para poder seleccionar la variable.
+<p class="bullet">&bull;Si la variable no tiene un atributo especificado, se ignora la prueba.  Incluya el atributo en el control <span class="screen">Las variables deben tener todos estos atributos</span> para poder excluir las variables que no tengan el atributo.
+<p class="bullet">&bull;Si el atributo es un atributo matriz, en el que puede haber varios valores para un único atributo, la variable cumple el criterio si cualquier valor de la matriz coincide con un valor de la lista <span class="screen">Valores del atributo</span>.
+
+<h2>Opciones</h2>
+<p><span class="runinhead">Orden de las variables seleccionadas en la macro.</span>
+Puede especificar que la lista de variables definida por la macro tenga un orden alfabético o bien siga el orden de las variables del archivo.  Si selecciona Según lista, las variables de la lista Limitar la selección a que pasan las otras condiciones aparecerán en el orden de la lista de la definición de la macro.
+
+<p><span class="runinhead">Si no se seleccionan variables.</span> 
+Si ninguna variable cumple el criterio de selección, puede generar un error y no definir la macro, o puede continuar y generar una macro vacía.
+La macro vacía puede probarse posteriormente mediante un código de macro para evitar que se generen errores por estar vacía.
+
+<p><span class="runinhead">Imprimir definición de macro.</span> 
+Elija si el contenido de la macro se va a listar en una tabla dinámica.
+
+<p><span class="runinhead">Carácter separador.</span> 
+Elija si va a separar los nombres de variables en la definición de la macro por un espacio en blanco o un signo más.  El signo más es útil en las expresiones TABLE de las Tablas personalizadas.
+
+<h2>Características adicionales</h2>
+Ejecute el comando<br>
+SPSSINC SELECT VARIABLES /HELP.<br>
+para mostrar toda la descripción de la sintaxis.
+<p>Los programadores de Python pueden acceder a un diccionario de macros definidas mediante este comando como SPSSINC_SELECT_VARIABLES.macrodict.
+<p>Se puede especificar una lista de funciones.</p>
+<p>Se puede utilizar TO y ALL en la sintaxis junto con variables específicas.</p>
+
+<h2>Requisitos</h2>
+Este comando requiere el complemento de programabilidad Python. Puede encontrar el complemento Python en el CD de IBM SPSS Statistics o puede descargarlo desde SPSS   Developer Central (www.spss.com/devcentral).</p>
+  <hr>
+  <p style="font-size:80%;">
+  Copyright IBM Corp. 2014</p>
+</body>
+</html>
+
