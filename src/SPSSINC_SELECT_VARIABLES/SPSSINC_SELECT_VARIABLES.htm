@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Define a Macro That Lists Selected Variables</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Define a Macro That Lists Selected Variables</h1>
+This command provides a way to define an SPSS macro whose value is
+a list of variables satisfying criteria such as the measurement level, type,
+variable attributes, and patterns in the names.
+<p>
+Using this approach, you can create generalized syntax jobs that do not
+depend on knowing the exact variable names in a particular data file.  For
+example, you could create a job that displays appropriate descriptive statistics
+for the variables in a dataset based on their measurement level.
+
+<p><span class="runinhead">Macro Name.</span>
+Enter a name for the macro to be generated.  It is conventional to start the
+name with "!" in order to avoid conflict with any variable names.
+
+<p><span class="runinhead">Variables and Limit Selection to.</span> 
+Move variables to the <span class="screen">Limit Selection to</span> control in order to restrict the result
+to a subset of only those names.  If no other criteria are specified, the macro would
+define exactly those names.
+<p class="bullet">&bull;If the Limit control is left empty, the
+other criteria will be applied to all variables.
+
+<p><span class="runinhead">Variable Type.</span> 
+Limit the selection to numeric variables, string variables, or both types (no limit).
+
+<p><span class="runinhead">Variable Level.</span> 
+Select the variable measurement level criteria to apply.
+
+<p><span class="runinhead">Variable Role.</span> 
+In Statistics version 18 or later, variables can have roles assigned.
+Select the role criterion to apply.  In version 17, this criterion will
+be ignored.
+<p class="bullet">&bull;The role is particularly useful if this dialog
+will be used in Modeler.
+
+<p><span class="runinhead">Variable Name Regular Expression.</span>
+You can enter a <em>regular expression</em> to filter the variables based on the names.
+Regular expressions describe a pattern of characters.
+The pattern is case-insensitive and starts at the beginning of the name.  Examples:
+
+<p>age  - any variables starting with age<br>
+<p>.*age - any variable whose name contains age<br>
+<p>.*\d$  - any variable whose name ends in a digit
+
+<h2>Attributes.</h2> 
+The Attributes subdialog box allows you to specify criteria based on custom attributes.
+Custom attributes are properties of variables that can be created by the VARIABLE ATTRIBUTE
+command, by the Define Variable Properties dialog box, or in the Data Editor.  They are
+saved with the dataset.
+
+<p><span class="runinhead">Variables must have all of these attributes.</span> 
+Selected variables must have all of the attributes named here.  Enter one or more attribute
+names separated by a blank.  The value of the attribute, if any, does not matter.
+
+<p><span class="runinhead">Variables must have at least one of these attributes.</span> 
+Variables will satisfy this criterion if they have at least one of the attributes listed.
+Enter one or more attribute names separated by a blank.
+The value of the attribute, if any, does not matter.  The names are not case sensitive.
+
+<p><span class="runinhead">Attribute Values.</span>
+Enter attribute names and value lists to restrict the selected variables to
+those having these values.  You can enter up to three sets of names and values.
+<p class="bullet">&bull;Values must each be enclosed in single or double quotation marks and, if there is more
+than one value, separate them by a blank.  
+<p class="bullet">&bull;The values are case sensitive: if a
+variable attribute named <em>units</em> has a value of <em>EUROS</em>, you must enter
+"EUROS" in the value field for units in order to select the variable.
+<p class="bullet">&bull;If the variable does not have a specified attribute, the test is ignored.  List the
+attribute in the <span class="screen">Variables must have all of these attributes</span>
+control in order to exclude variables that do not have the attribute.
+<p class="bullet">&bull;If the attribute is an array attribute, where there can be many
+values for a single attribute, the variable satisfies the criteria if any value in the array
+matches a value in the <span class="screen">Attribute Values</span> list.
+
+<h2>Options</h2>
+<p><span class="runinhead">Order of Selected Variables in Macro.</span>
+You can specify that the variable list defined by the macro is alphabetical or 
+according to the order of the variables in the file.  If As listed is selected,
+any variables in the Limit Selection to list that pass the other conditions
+will appear in the listed order in the macro definition.
+
+<p><span class="runinhead">If No Variables Are Selected.</span> 
+If no variables satisfy the selection criteria, you can either raise an error
+and not define the macro, or you can proceed and generate an empty macro.
+The empty macro could then be tested later using macro code in order to
+avoid generating errors due to its being empty.
+
+<p><span class="runinhead">Print macro definition.</span> 
+Choose whether the contents of the macro are listed in a pivot table or not.
+
+<p><span class="runinhead">Separator Character.</span> 
+Choose whether to separate variable names in the macro definition
+with a blank or a plus sign.  The plus sign is useful for Custom Tables
+TABLE expressions.
+
+<h2>Additional Features</h2>
+Run the command<br>
+SPSSINC SELECT VARIABLES /HELP.<br>
+to display the entire syntax description.
+<p>For Python programmers, a dictionary of the macros defined by this command
+can be accessed as SPSSINC_SELECT_VARIABLES.macrodict.
+<p>A list of roles can be specified.</p>
+<p>TO and ALL can be used in syntax along with specific variables.</p>
+
+<h2>Requirements</h2>
+This command requires the Python Programmability Plug-in,
+You can find the Python plug-in on the IBM SPSS Statistics CD, or you can download
+it from SPSS Developer Central (www.spss.com/devcentral).</p>
+  <hr>
+  <p style="font-size:80%;">
+  Copyright IBM Corp. 2014</p>
+</body>
+</html>
+

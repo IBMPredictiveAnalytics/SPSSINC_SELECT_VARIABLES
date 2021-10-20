@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>定義列出所選變數的巨集</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>定義列出所選變數的巨集</h1>
+此指令提供定義 SPSS 巨集的方法，其值是符合測量層次、類型、變數屬性及名稱中的型樣等準則的變數清單。
+<p>
+使用此方法，您可以建立無需知道特定資料檔中的確切變數名稱的一般性語法工作。例如，您可以根據測量層次，為資料集中的變數建立顯示適當敘述性統計資料的工作。
+<p><span class="runinhead">巨集名稱。</span> 輸入要產生的巨集的名稱。依慣例，名稱以 "!" 開頭，以免與任何變數名稱衝突。
+<p><span class="runinhead">變數及將選擇限制為。</span>
+將變數移動到<span class="screen">將選擇限制為</span>控制項，以便將結果限制為僅包括這些名稱的子集。如果未指定其他準則，巨集將確切地定義這些名稱。
+<p class="bullet">&bull;如果「限制」控制項留空，系統會將其他準則套用至所有變數。
+<p><span class="runinhead">變數類型。</span>
+將選擇限制為數值變數、字串變數或這兩種類型（無限制）。
+<p><span class="runinhead">變數層次。</span>
+選取要套用的變數測量層次準則。
+<p><span class="runinhead">變數角色。</span>
+在 Statistics 第 18 版或更新版本中，可能已對變數指派了角色。
+選取要套用的角色準則。在第 17 版中，此準則會被忽略。
+<p class="bullet">&bull;如果將在 Modeler 中使用此對話框，此角色將特別有用。
+<p><span class="runinhead">變數名稱正規表示式。</span>
+您可以輸入<em>正規表示式</em>來根據名稱過濾變數。
+正規表示式說明字元的型樣。
+型樣不區分大小寫，且從名稱開頭開始。範例：
+
+<p>age  - 以 age 開頭的任何變數<br>
+<p>.*age - 名稱包含 age 的任何變數<br>
+<p>.*\d$  - 名稱以數字結尾的任何變數
+
+<h2>屬性。</h2> 
+「屬性」子對話框可讓您根據自訂屬性指定準則。
+自訂屬性是可以透過 VARIABLE ATTRIBUTE 指令、「定義變數內容」對話框或在「資料編輯器」中建立的變數內容。它們與資料集一起儲存。
+
+<p><span class="runinhead">變數必須具有所有這些屬性。</span>
+選取的變數必須在這裡指定所有屬性。輸入一或多個以空白區隔的屬性名稱。屬性值（如果有的話）無關緊要。
+<p><span class="runinhead">變數必須具有至少其中一個屬性。</span>
+如果變數具有至少一個列出的屬性，變數將符合此準則。
+輸入一或多個以空白區隔的屬性名稱。屬性值（如果有的話）無關緊要。
+名稱不區分大小寫。
+
+<p><span class="runinhead">屬性值。</span>
+輸入屬性名稱及值清單，以將選取的變數限制為具有這些值的變數。您可以輸入最多三組名稱及值。
+<p class="bullet">&bull;每個值都必須以單引號或雙引號括住，如果有多個值，則以空白加以區隔。
+<p class="bullet">&bull;值區分大小寫：如果名稱為 <em>units</em> 的變數屬性具有 <em>EUROS</em> 值，您必須在 units 的值欄位中輸入 "EUROS"，以選取變數。
+<p class="bullet">&bull;如果變數沒有指定的屬性，檢定會被忽略。列出<span class="screen">變數必須具有所有這些屬性</span>控制項中的屬性，以排除沒有此屬性的變數。
+<p class="bullet">&bull;如果此屬性是陣列屬性（其中單一屬性可能有許多值），且陣列中的任何值與<span class="screen">屬性值</span>清單中的值相符，變數即符合準則。
+<h2>選項</h2>
+<p><span class="runinhead">巨集中所選變數的順序。</span>
+您可以指定巨集定義的變數清單是按字母順序還是按檔案中的變數順序排列的。如果選取「依列出」，「將選擇限制為」清單中傳遞其他條件的任何變數將以在巨集定義中列出的順序出現。
+<p><span class="runinhead">如果未選取任何變數。</span>
+如果沒有變數符合選擇準則，您可以引發錯誤且不定義巨集，也可以繼續執行動作並產生空巨集。
+然後，您可以稍後使用巨集程式碼來檢定空巨集，以免由於它是空的而產生錯誤。
+
+<p><span class="runinhead">列印巨集定義。</span>
+選擇巨集的內容是否列在樞紐表中。
+<p><span class="runinhead">分隔字元。</span>
+選擇是使用空白還是加號來區隔巨集定義中的變數名稱。加號對於「自訂表格」表格表示式很有用。
+<h2>其他特性</h2>
+執行指令<br>
+SPSSINC SELECT VARIABLES /HELP.<br>
+以顯示整個語法說明。<p>對於 Python 程式設計師，可以將此指令定義的巨集字典當作 SPSSINC_SELECT_VARIABLES.macrodict 來存取。
+<p>可以指定角色清單。</p>
+<p>TO 及 ALL 可以和特定的變數一起用在語法中。</p>
+
+<h2>需求</h2>
+此指令需要 Python Programmability Plug-in，您可以在 IBM SPSS Statistics CD 上找到 Python 外掛程式，也可以從 SPSS Developer Central (www.spss.com/devcentral) 下載。</p>
+  <hr>
+  <p style="font-size:80%;">
+  Copyright IBM Corp. 2014</p>
+</body>
+</html>
+

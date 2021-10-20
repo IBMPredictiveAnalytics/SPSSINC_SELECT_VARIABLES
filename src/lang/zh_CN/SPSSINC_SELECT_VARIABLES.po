@@ -1,74 +1,42 @@
-#/***********************************************************************
-# * Licensed Materials - Property of IBM 
-# *
-# * IBM SPSS Products: Statistics Common
-# *
-# * (C) Copyright IBM Corp. 1989, 2014
-# *
-# * US Government Users Restricted Rights - Use, duplication or disclosure
-# * restricted by GSA ADP Schedule Contract with IBM Corp. 
-# ************************************************************************/
-
-# NLS_ENCODING=UTF-8
-# IBMUPYTH
-
-
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Translations template for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
+
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-12-08 14:55+China Standard Time\n"
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-10-11 00:53-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Globalization Pipeline\n"
 
-
-#: SPSSINC_SELECT_VARIABLES.py:186
 msgid "---"
-msgstr ""
-"---"
+msgstr "---"
 
-#: SPSSINC_SELECT_VARIABLES.py:246
 msgid "The attribute name and value pairs on ATTRVALUES do not match"
-msgstr ""
-"ATTRVALUES 中的属性“名称/值”对不匹配"
+msgstr "ATTRVALUES 中的属性“名称/值”对不匹配"
 
-#: SPSSINC_SELECT_VARIABLES.py:253
 msgid "Invalid pattern regular expression: %s"
-msgstr ""
-"模式正则表达式无效：%s"
+msgstr "模式正则表达式无效：%s"
 
-#: SPSSINC_SELECT_VARIABLES.py:302
 msgid "No variables qualify for macro definition %s"
-msgstr ""
-"没有任何变量符合宏定义 %s 的条件"
+msgstr "没有任何变量符合宏定义 %s 的条件"
 
-#: SPSSINC_SELECT_VARIABLES.py:326
 msgid "Macro Definition"
-msgstr ""
-"宏定义"
+msgstr "宏定义"
 
-#: SPSSINC_SELECT_VARIABLES.py:327
 msgid "Variables Listed in Macro %s"
-msgstr ""
-"宏 %s 中列出的变量"
+msgstr "宏 %s 中列出的变量"
 
-#: SPSSINC_SELECT_VARIABLES.py:330
 msgid "No matching variables"
-msgstr ""
-"没有匹配的变量"
+msgstr "没有匹配的变量"
 
-#: SPSSINC_SELECT_VARIABLES.py:349
 msgid "ALL must be the last item in the variable list"
-msgstr ""
-"ALL 必须是变量列表中的最后一项"
-
-
-
+msgstr "ALL 必须是变量列表中的最后一项"

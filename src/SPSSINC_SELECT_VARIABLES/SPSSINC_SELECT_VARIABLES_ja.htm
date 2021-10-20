@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title>選択された変数をリストするマクロの定義</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>選択された変数をリストするマクロの定義</h1>
+このコマンドでは、尺度、データ型、変数属性、名前のパターンなどの基準を満たす変数のリストを値とする SPSS マクロを定義できます。
+<p>
+この方法を使用して、特定のデータ ファイル内の正確な変数名が不明でも機能する一般化されたシンタックス ジョブを作成できます。例えば、データセット内の変数の適切な記述統計を、その変数の尺度に基づいて表示するジョブを作成できます。
+<p><span class="runinhead">マクロ名:</span> 生成するマクロの名前を入力します。他の変数名と競合しないようにするために、マクロ名は慣例的に「!」で始めます。
+<p><span class="runinhead">変数および選択対象の制限:</span> 
+これらの名前のサブセットに結果を制限する場合は、変数を<span class="screen">「選択対象を制限」</span>コントロールに移動します。他の基準を指定しなければ、マクロはこれらの名前をすべて定義します。
+<p class="bullet">&bull;制限コントロールを空のままにすると、他の基準がすべての変数に適用されます。
+
+<p><span class="runinhead">変数の型:</span> 
+選択の対象を、数値型変数、文字型変数、またはその両方 (制限なし) に制限します。
+<p><span class="runinhead">変数レベル:</span> 
+適用する変数の尺度基準を選択します。
+
+<p><span class="runinhead">変数の役割:</span> 
+Statistics バージョン 18 以降では、変数に役割を割り当てることができます。
+適用する役割基準を選択します。バージョン 17 では、この基準が無視されます。
+<p class="bullet">&bull;このダイアログを Modeler で使用する場合は、役割が特に役立ちます。
+
+<p><span class="runinhead">変数名の正規表現:</span> 
+<em>正規表現</em> を入力して、名前に基づいて変数をフィルタリングすることができます。
+正規表現は、文字のパターンを表します。パターンは名前の先頭から始まり、大/小文字は区別されません。例:
+
+<p>age  - 「age」で始まるすべての変数<br>
+<p>.*age - 名前に「age」が含まれるすべての変数<br>
+<p>.*\d$  - 名前の末尾が数字であるすべての変数
+
+<h2>属性。</h2> 
+「属性」サブダイアログ ボックスでは、カスタム属性に基づいて基準を指定することができます。
+カスタム属性は変数のプロパティであり、VARIABLE ATTRIBUTE コマンド、「変数プロパティの定義」ダイアログ ボックス、またはデータ エディタで作成できます。カスタム属性はデータセットと共に保存されます。
+
+<p><span class="runinhead">変数にこれらの属性がすべて必要:</span> 
+選択される変数には、ここで指定するすべての属性が必要です。1 つ以上の属性名を空白で区切って入力します。属性の値は存在していても関係ありません。
+
+<p><span class="runinhead">変数にこれらの属性が 1 つ以上必要:</span> 
+リストした属性が変数に 1 つでもあれば、変数はこの基準を満たします。
+1 つ以上の属性名を空白で区切って入力します。属性の値は存在していても関係ありません。
+この名前は大文字小文字を区別しません。
+<p><span class="runinhead">属性値:</span> 
+属性の名前と値のリストを入力して、選択される変数をそれらの属性値を持つものに限定します。名前と値のセットは最大 3 つまで入力できます。
+<p class="bullet">&bull;各値は、一重引用符または二重引用符で囲む必要があり、複数の値を指定する場合は値の間を空白で区切ります。
+<p class="bullet">&bull;値では大文字と小文字が区別されます。<em>units</em> という変数属性の値が <em>EUROS</em> である変数を選択するには、「units」の値フィールドに "EUROS" と入力する必要があります。
+<p class="bullet">&bull;指定した属性が変数にない場合、この検定は無視されます。この属性を持たない変数を除外するには、<span class="screen">「変数にこれらの属性がすべて必要」</span>コントロールでこの属性を指定します。
+<p class="bullet">&bull;1 つの属性に複数の値が存在する可能性がある配列属性の場合は、配列内の値が<span class="screen">「属性値」</span>リスト内の値と 1 つでも一致していれば、変数は基準を満たします。
+<h2>オプション</h2>
+<p><span class="runinhead">マクロでの選択された変数の順序:</span> 
+マクロによって定義される変数リストを、アルファベット順にするか、ファイルでの変数の順序と同じ順序にするかを指定できます。「リスト順」を選択すると、「選択を制限」リスト内の他の条件を渡す変数が、マクロ定義でリストされた順に表示されます。
+
+<p><span class="runinhead">変数が選択されなかった場合の処理:</span> 
+選択基準を満たす変数がない場合は、エラーを発生させるか、マクロを定義しないようにするか、あるいは処理を続行して空のマクロを生成できます。この空のマクロは、空であることが原因でエラーが発生しないように、後からマクロ コードを使用してテストできます。
+
+<p><span class="runinhead">マクロ定義の出力:</span> 
+マクロの内容をピボット テーブルにリストするかどうかを選択します。
+<p><span class="runinhead">区切り文字:</span> 
+マクロ定義内の変数名を、空白と正符号のどちらで区切るかを選択します。「カスタム テーブル」のテーブル式では、正符号が便利です。
+
+<h2>その他の機能</h2>
+次のコマンドを実行します。<br>
+SPSSINC SELECT VARIABLES /HELP.<br>
+シンタックス全体の説明が表示されます。<p>Python のプログラマーは、このコマンドで定義されるマクロの辞書に SPSSINC_SELECT_VARIABLES.macrodict を使用してアクセスできます。
+<p>役割のリストを指定できます。</p>
+<p>シンタックスでは特定の変数と共に TO と ALL を使用できます。</p>
+
+<h2>要件</h2>
+このコマンドには、Python Programmability プラグインが必要です。Python プラグインは、IBM SPSS Statistics CD 上にあります。または、SPSS Developer Central (www.spss.com/devcentral) からダウンロードできます。
+  </p>
+  <hr>
+  <p style="font-size:80%;">
+  Copyright IBM Corp. 2014</p>
+</body>
+</html>
+

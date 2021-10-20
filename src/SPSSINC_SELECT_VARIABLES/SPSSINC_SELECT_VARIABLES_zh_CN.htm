@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>定义一个列出选定变量的宏</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>定义一个列出选定变量的宏</h1>
+此命令提供了一种方法来定义 SPSS 宏，这个宏的值是一组满足测量级别、类型、变量属性和名称模式之类的条件的变量。
+<p>
+通过使用这种方法，您可以创建一般化的语法作业，这些作业不要求了解特定数据文件中的准确变量名称。例如，您可以创建一个作业，该作业根据数据集中各个变量的测量级别显示这些变量的相应描述统计。
+<p><span class="runinhead">宏名称</span>。请输入要生成的宏的名称。常见的做法是，使此名称以“!”开头，以免与任何变量名称发生冲突。
+<p><span class="runinhead">“变量”和“将选择限制为”。</span>通过将变量移入<span class="screen">将选择限制为</span>控件，可以将结果限制为仅由这些名称组成的子集。如果未指定任何其他条件，那么这个宏将恰好定义这些名称。
+<p class="bullet">&bull;如果保留“限制”控件为空，那么其他条件将应用于所有变量。
+<p><span class="runinhead">变量类型。</span>将选择限制为数字变量、字符串变量或者这两种类型的变量（无限制）。
+<p><span class="runinhead">变量级别。</span>请选择要应用的变量测量级别条件。
+<p><span class="runinhead">变量角色。</span>在 Statistics V18 或更高版本中，可以向变量分配角色。请选择要应用的角色条件。在 V17 中，将忽略此条件。
+<p class="bullet">&bull;如果将在 Modeler 中使用此对话框，那么此角色特别有用。
+<p><span class="runinhead">变量名称正则表达式。</span>您可以输入<em>正则表达式</em>，以便根据名称对变量进行过滤。正则表达式用于描述字符模式。模式不区分大小写，并起始于名称开头。示例：
+<p>age - 任何以 age 开头的变量<br>
+<p>.*age - 任何其名称包含 age 的变量<br>
+<p>.*\d$ - 任何其名称以数字结尾的变量
+<h2>属性。</h2> 
+“属性”子对话框使您能够根据定制属性指定条件。定制属性是可以由 VARIABLE ATTRIBUTE 命令创建、由“定义变量属性”对话框创建或者在数据编辑器中创建的变量特性。它们随数据集一起保存。
+
+<p><span class="runinhead">变量必须具有所有这些属性。</span>选择的变量必须具有此处指定的所有属性。请输入一个或多个以空格分隔的属性名称。属性的值（如果有）无关紧要。
+<p><span class="runinhead">变量必须具有其中至少一个属性。</span>如果变量至少具有其中一个列出的属性，那么将满足此条件。请输入一个或多个以空格分隔的属性名称。属性的值（如果有）无关紧要。这些名称不区分大小写。
+<p><span class="runinhead">属性值。</span>请输入属性名称和值列表，以便将选定变量限制为具有这些值的变量。最多可以输入三组名称和值。
+<p class="bullet">&bull;每个值都必须括在单引号或双引号内，如果存在多个值，请使用空格进行分隔。
+<p class="bullet">&bull;这些值区分大小写：如果名为 <em>units</em> 的变量属性的值为 <em>EUROS</em>，那么您必须在 units 的值字段中输入“EUROS”才能选中此变量。
+<p class="bullet">&bull;如果变量不具有指定的属性，那么将忽略此检验。请在<span class="screen">变量必须具有所有这些属性</span>控件中列出此属性，以便排除不具有此属性的变量。
+<p class="bullet">&bull;对于数组属性（即，单个属性可以具有多个值），如果该数组中的任何值与<span class="screen">属性值</span>列表中的值匹配，那么该变量满足此条件。
+<h2>选项</h2>
+<p><span class="runinhead">所选变量在宏中的顺序。</span>您可以指定这个宏所定义的变量列表按字母顺序排列，或者根据文件中的变量顺序排列。如果选择了“按列示顺序”，那么“将选择限制为”列表中所有符合其他条件的变量都将按列示顺序出现在宏定义中。
+<p><span class="runinhead">如果未选中任何变量。</span>如果没有任何变量满足选择条件，那么您可以发出错误而不定义宏，也可以继续操作并生成空的宏。稍后，可以使用宏代码来检验这个空的宏，以避免由于宏为空而生成错误。
+<p><span class="runinhead">打印宏定义。</span>请选择是否将宏的内容列示在透视表中。
+<p><span class="runinhead">分隔符。</span>请选择是使用空格还是加号对宏定义中的变量名称进行分隔。加号对于定制表 TABLE 表达式而言非常有用。
+<h2>其他功能部件</h2>
+运行命令<br>
+SPSSINC SELECT VARIABLES /HELP。<br>
+可以显示整个语法描述。<p>对于 Python 程序员，可以通过 SPSSINC_SELECT_VARIABLES.macrodict 来访问此命令所定义的宏的字典。
+<p>可以指定角色列表。</p>
+<p>在语法中，可以随特定变量一起使用 TO 和 ALL。</p>
+
+<h2>要求</h2>
+此命令需要 Python Programmability 插件。您可以在
+IBM SPSS Statistics CD 上找到 Python 插件，也可以从
+SPSS Developer Central (www.spss.com/devcentral) 下载此插件。</p>
+  <hr>
+  <p style="font-size:80%;">
+  Copyright IBM Corp. 2014</p>
+</body>
+</html>
+
