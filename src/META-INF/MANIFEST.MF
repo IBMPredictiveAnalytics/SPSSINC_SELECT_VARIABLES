@@ -1,4 +1,5 @@
 Name: SPSSINC SELECT VARIABLES
+Display-Name: Select Variables
 Dialog-Specs: SPSSINC_SELECT_VARIABLES.spd
 Command-Specs: SPSSINC_SELECT_VARIABLES.xml
 Code-Files: SPSSINC_SELECT_VARIABLES.py
